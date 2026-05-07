@@ -1,4 +1,4 @@
-import styles from './categories.module.css';
+import styles from "./categories.module.css";
 
 /**
  * Categories — horizontal pill-filter bar for product category navigation.
@@ -7,7 +7,11 @@ import styles from './categories.module.css';
  * @param {string} [activeCategory] - slug of the currently selected category
  * @param {(slug: string) => void} [onCategoryChange]
  */
-export function Categories({ categories = [], activeCategory, onCategoryChange }) {
+export function Categories({
+  categories = [],
+  activeCategory,
+  onCategoryChange,
+}) {
   return (
     <section className={styles.section}>
       <nav aria-label="Browse categories">
@@ -18,11 +22,11 @@ export function Categories({ categories = [], activeCategory, onCategoryChange }
                 type="button"
                 className={[
                   styles.pill,
-                  activeCategory === cat.slug ? styles.pillActive : '',
+                  activeCategory === cat.slug ? styles.pillActive : "",
                 ]
                   .filter(Boolean)
-                  .join(' ')}
-                aria-current={activeCategory === cat.slug ? 'true' : undefined}
+                  .join(" ")}
+                aria-current={activeCategory === cat.slug ? "true" : undefined}
                 onClick={() => onCategoryChange?.(cat.slug)}
               >
                 {cat.label}
