@@ -1,0 +1,81 @@
+/*
+ * index.css — App Chrome & Base Resets
+ * MCP Design System documentation site
+ *
+ * This file loads AFTER tokens.css (full token system).
+ * Responsibility: font loading, doc-site convenience aliases, HTML resets.
+ */
+
+/* ─── Google Fonts ────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
+
+/* ─── Doc-site convenience aliases ───────────────────────────────────────── */
+/*
+ * These short-hand vars are used by docs.css, button.module.css, and the
+ * sidebar/layout components. They reference the full --sds-color-* token
+ * system defined in tokens.css.
+ */
+:root {
+  /* Surfaces */
+  --bg:      #FFFFFF;
+  --surface: #F7F8FA;
+  --border:  #E5E5E8;
+
+  /* Text */
+  --text:   #686972;   /* default secondary */
+  --text-h: #3B3B3E;   /* default heading */
+
+  /* Brand accent (mariner blue — from tokens.css --mariner-* scale) */
+  --accent:        #1E54AF;   /* mariner-800 — interactive, active states */
+  --accent-hover:  #1E498A;   /* mariner-900 — hover */
+  --accent-light:  #3B9CF6;   /* mariner-500 — lighter variant */
+  --accent-bg:     #EFF8FF;   /* mariner-50  — tinted backgrounds */
+  --accent-border: #BFE4FE;   /* mariner-200 — subtle borders */
+
+  /* Font shorthand aliases (tokens.css defines --font-family-display etc.) */
+  --font-mono: ui-monospace, Consolas, monospace;
+}
+
+/* ─── Base resets ─────────────────────────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Manrope', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+  color-scheme: light;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Manrope', system-ui, sans-serif;
+  color: var(--text-h);
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+/* Default code element — overridden per-context by token-pill classes in docs.css */
+code {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  padding: 2px 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-h);
+}

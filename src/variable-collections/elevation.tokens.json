@@ -1,0 +1,51 @@
+{
+  "elevation": {
+    "sm": {
+      "$type": "number",
+      "$value": 2,
+      "$extensions": {
+        "com.figma.variableId": "VariableID:35909:236077",
+        "com.figma.scopes": [
+          "EFFECT_FLOAT"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "md": {
+      "$type": "number",
+      "$value": 6,
+      "$extensions": {
+        "com.figma.variableId": "VariableID:35909:236078",
+        "com.figma.scopes": [
+          "EFFECT_FLOAT"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "lg": {
+      "$type": "number",
+      "$value": 15,
+      "$extensions": {
+        "com.figma.variableId": "VariableID:35909:236079",
+        "com.figma.scopes": [
+          "EFFECT_FLOAT"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "xl": {
+      "$type": "number",
+      "$value": 25,
+      "$extensions": {
+        "com.figma.variableId": "VariableID:35909:236080",
+        "com.figma.scopes": [
+          "EFFECT_FLOAT"
+        ],
+        "com.figma.isOverride": true
+      }
+    }
+  },
+  "$extensions": {
+    "com.figma.modeName": "Default"
+  }
+}

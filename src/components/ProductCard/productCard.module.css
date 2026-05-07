@@ -1,0 +1,127 @@
+/* ── Card wrapper ─────────────────────────────────────────────── */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-pt-4);
+  cursor: pointer;
+  outline: none;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card:hover .imageWrap {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.card:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--sds-color-effects-focused-shadow-ring),
+    0 0 0 4px var(--sds-color-effects-focused-shadow-default);
+  border-radius: var(--corner-radius-sm);
+}
+
+/* ── Image container ──────────────────────────────────────────── */
+.imageWrap {
+  position: relative;
+  background: var(--sds-color-background-brand-tertiary);
+  border-radius: var(--corner-radius-sm);
+  overflow: hidden;
+  width: 100%;
+  height: 234px; /* mobile-first */
+  flex-shrink: 0;
+  transition: box-shadow 150ms ease;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+}
+
+/* ── Arrow icon ───────────────────────── */
+.arrowIcon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sds-color-text-default-default);
+  pointer-events: none;
+  flex-shrink: 0;
+  margin-top: 4px; /* visually center with the first line of text */
+}
+
+/* ── Content row (name + price + icon) ────────────────────────── */
+.content {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-pt-1);
+  padding: 0 var(--spacing-pt-2);
+}
+
+/* ── Text block ───────────────────────────────────────────────── */
+.text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-pt-1);
+}
+
+.name {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-text-md);
+  line-height: var(--line-height-text-md);
+  color: var(--sds-color-text-default-default);
+}
+
+.price {
+  margin: 0;
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-text-sm);
+  line-height: var(--line-height-text-sm);
+  color: var(--sds-color-text-default-secondary);
+}
+
+/* ── Tablet (768px – 1439px) ──────────────────────────────────── */
+@media (min-width: 768px) and (max-width: 1439px) {
+  .card {
+    gap: var(--spacing-pt-4);
+  }
+
+  .imageWrap {
+    height: 340px;
+  }
+
+  .content {
+    gap: var(--spacing-pt-1);
+    padding: 0 var(--spacing-pt-2);
+  }
+}
+
+/* ── Desktop (1440px+) ────────────────────────────────────────── */
+@media (min-width: 1440px) {
+  .card {
+    gap: var(--spacing-pt-3);
+  }
+
+  .imageWrap {
+    height: 368px;
+  }
+
+  .content {
+    gap: var(--spacing-pt-2);
+    padding: 0 var(--spacing-pt-1);
+  }
+}

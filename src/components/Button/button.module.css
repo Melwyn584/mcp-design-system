@@ -1,0 +1,184 @@
+/* ─── Base ───────────────────────────────────────────────────────────────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-pt-2);
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+  outline: none;
+  transition: background-color 100ms ease, border-color 100ms ease, box-shadow 100ms ease;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+.btn:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--sds-color-effects-focused-shadow-ring),
+    0 0 0 4px var(--sds-color-effects-focused-shadow-default);
+}
+
+.btn:disabled {
+  opacity: var(--sds-opacity-disabled);
+  pointer-events: none;
+}
+
+/* ─── Sizes ──────────────────────────────────────────────────────────────── */
+
+.large {
+  height: var(--spacing-pt-12);
+  min-width: 112px;
+  padding: 12px var(--spacing-pt-5);
+  border-radius: var(--corner-radius-lg);
+  font-size: var(--font-size-text-md);
+  line-height: var(--line-height-text-md);
+}
+
+.medium {
+  height: var(--spacing-pt-10);
+  min-width: 112px;
+  padding: 9px var(--spacing-pt-4);
+  border-radius: var(--corner-radius-md);
+  font-size: var(--font-size-text-md);
+  line-height: var(--line-height-text-md);
+}
+
+.small {
+  height: var(--spacing-pt-8);
+  min-width: 101px;
+  padding: var(--spacing-pt-2);
+  border-radius: var(--corner-radius-sm);
+  font-size: var(--font-size-text-sm);
+  line-height: var(--line-height-text-sm);
+}
+
+/* ─── Icon-only overrides ────────────────────────────────────────────────── */
+
+.iconOnly {
+  min-width: unset;
+  padding: 0;
+}
+
+.large.iconOnly { width: var(--spacing-pt-12); }
+.medium.iconOnly { width: var(--spacing-pt-10); }
+.small.iconOnly  { width: var(--spacing-pt-8); }
+
+/* ─── Icon wrapper ───────────────────────────────────────────────────────── */
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.large .icon  { width: 16px; height: 16px; }
+.medium .icon { width: 16px; height: 16px; }
+.small .icon  { width: 12px; height: 12px; }
+
+/* ─── PRIMARY (Brand - Mariner Blue) ─────────────────────────────────────── */
+
+.primary.filled {
+  background-color: var(--sds-color-background-brand-default);
+  border-color: var(--sds-color-border-brand-default);
+  color: var(--sds-color-text-brand-on-brand);
+}
+
+.primary.filled:hover:not(:disabled) {
+  background-color: var(--sds-color-background-brand-hover);
+  border-color: var(--sds-color-background-brand-hover);
+}
+
+.primary.outline {
+  background-color: var(--sds-color-background-default-default);
+  border-color: var(--sds-color-border-brand-secondary);
+  color: var(--sds-color-text-brand-on-brand-secondary);
+}
+
+.primary.outline:hover:not(:disabled) {
+  background-color: var(--sds-color-background-brand-tertiary);
+}
+
+.primary.empty {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--sds-color-text-brand-tertiary);
+}
+
+.primary.empty:hover:not(:disabled) {
+  background-color: var(--sds-color-background-brand-tertiary);
+}
+
+/* ─── ACCENT (Apple Green) ───────────────────────────────────────────────── */
+
+.accent.filled {
+  background-color: var(--sds-color-background-positive-default);
+  border-color: var(--sds-color-border-positive-default);
+  color: var(--sds-color-text-positive-on-positive);
+}
+
+.accent.filled:hover:not(:disabled) {
+  background-color: var(--sds-color-background-positive-hover);
+  border-color: var(--sds-color-background-positive-hover);
+}
+
+.accent.outline {
+  background-color: var(--sds-color-background-default-default);
+  border-color: var(--sds-color-border-positive-default);
+  color: var(--sds-color-text-positive-default);
+}
+
+.accent.outline:hover:not(:disabled) {
+  background-color: var(--sds-color-background-positive-tertiary);
+}
+
+.accent.empty {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--sds-color-text-positive-tertiary);
+}
+
+.accent.empty:hover:not(:disabled) {
+  background-color: var(--sds-color-background-positive-tertiary);
+}
+
+/* ─── DANGER (Red) ───────────────────────────────────────────────────────── */
+
+.danger.filled {
+  background-color: var(--sds-color-background-danger-default);
+  border-color: var(--sds-color-border-danger-default);
+  color: var(--sds-color-text-danger-on-danger);
+}
+
+.danger.filled:hover:not(:disabled) {
+  background-color: var(--sds-color-background-danger-hover);
+  border-color: var(--sds-color-background-danger-hover);
+}
+
+.danger.outline {
+  background-color: var(--sds-color-background-default-default);
+  border-color: var(--sds-color-border-danger-secondary);
+  color: var(--sds-color-text-danger-default);
+}
+
+.danger.outline:hover:not(:disabled) {
+  background-color: var(--sds-color-background-danger-tertiary);
+}
+
+.danger.empty {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--sds-color-text-danger-default);
+}
+
+.danger.empty:hover:not(:disabled) {
+  background-color: var(--sds-color-background-danger-tertiary);
+}

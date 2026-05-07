@@ -1,0 +1,107 @@
+/* ─── Base ─────────────────────────────────────────────────────────────────
+   Links are inline text elements. No background, no padding, no elevation.
+   Spacing, color, typography, and focus are driven entirely by tokens.
+*/
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-pt-1);
+  padding: 0;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  outline: none;
+  white-space: nowrap;
+  -webkit-font-smoothing: antialiased;
+  transition: color 100ms ease, box-shadow 100ms ease, text-decoration-color 100ms ease;
+}
+
+.link:hover:not(.disabled) {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.link:focus-visible {
+  background-color: var(--sds-color-background-default-default);
+  box-shadow:
+    0 0 0 2px var(--sds-color-effects-focused-shadow-ring),
+    0 0 0 4px var(--sds-color-effects-focused-shadow-default);
+  border-radius: var(--corner-radius-xs, 2px);
+}
+
+.disabled,
+.link:disabled {
+  opacity: var(--sds-opacity-disabled);
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+/* ─── Sizes ──────────────────────────────────────────────────────────────── */
+
+.large {
+  font-size: var(--font-size-text-md);
+  line-height: var(--line-height-text-md);
+}
+
+.medium {
+  font-size: var(--font-size-text-md);
+  line-height: var(--line-height-text-md);
+}
+
+.small {
+  font-size: var(--font-size-text-sm);
+  line-height: var(--line-height-text-sm);
+}
+
+/* ─── Types ──────────────────────────────────────────────────────────────── */
+
+.primary {
+  color: var(--sds-color-text-brand-default);
+}
+
+.primary:hover:not(.disabled) {
+  color: var(--sds-color-text-brand-default);
+  text-decoration-color: var(--sds-color-text-brand-default);
+}
+
+.danger {
+  color: var(--sds-color-text-danger-default);
+}
+
+.danger:hover:not(.disabled) {
+  color: var(--sds-color-text-danger-default);
+  text-decoration-color: var(--sds-color-text-danger-default);
+}
+
+/* ─── Icon wrapper ───────────────────────────────────────────────────────── */
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.large .icon,
+.medium .icon {
+  width: 16px;
+  height: 16px;
+}
+
+.small .icon {
+  width: 12px;
+  height: 12px;
+}

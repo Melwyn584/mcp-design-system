@@ -1,0 +1,97 @@
+/* ── Section wrapper ─────────────────────────────────────────── */
+.section {
+  width: 100%;
+  background: var(--sds-color-background-default-default);
+
+  /* Mobile-first base padding */
+  padding: var(--spacing-pt-8) var(--spacing-pt-4);
+}
+
+/* ── Pills list (flex wrap) ──────────────────────────────────── */
+.pillList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-pt-4);
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+/* ── Individual pill button ──────────────────────────────────── */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  padding: 0 var(--spacing-pt-2);
+  border-radius: var(--corner-radius-sm);
+  border: var(--border-width-sm) solid var(--sds-color-border-brand-secondary);
+  background: var(--sds-color-background-default-default);
+  color: var(--sds-color-text-brand-on-brand-secondary);
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-text-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-text-sm);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
+  outline: none;
+}
+
+.pill:hover:not(.pillActive) {
+  background: var(--sds-color-background-brand-secondary);
+}
+
+.pill:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--effects-focused-shadow-ring),
+    0 0 0 4px var(--effects-focused-shadow-default);
+}
+
+/* ── Active / selected state ─────────────────────────────────── */
+.pillActive {
+  background: var(--sds-color-background-brand-default);
+  color: var(--sds-color-text-brand-on-brand);
+  border-color: var(--sds-color-background-brand-default);
+}
+
+.pillActive:hover {
+  background: var(--sds-color-background-brand-hover);
+  border-color: var(--sds-color-background-brand-hover);
+}
+
+/* ── Tablet (768px – 1439px) ─────────────────────────────────── */
+@media (min-width: 768px) and (max-width: 1439px) {
+  .section {
+    padding: var(--spacing-pt-16) var(--spacing-pt-8);
+  }
+
+  .pillList {
+    justify-content: center;
+  }
+
+  .pill {
+    /* ~3 per row accounting for 2 × 16px gaps */
+    flex: 1 0 calc(33.33% - 11px);
+  }
+}
+
+/* ── Desktop (1440px+) ───────────────────────────────────────── */
+@media (min-width: 1440px) {
+  .section {
+    padding: var(--spacing-pt-24) var(--spacing-pt-20);
+  }
+
+  .pillList {
+    max-width: 1028px;
+    margin: 0 auto;
+    justify-content: center;
+  }
+
+  .pill {
+    /* 5 per row: 4 × 16px gaps = 64px total gap ÷ 5 = 12.8px per pill */
+    flex: 1 0 calc(20% - 13px);
+  }
+}

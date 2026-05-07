@@ -1,0 +1,713 @@
+/*
+ * MCP Design System — Design Tokens
+ * Source: Figma Variables Panel (get_variable_defs API)
+ * File: MCP-Design-System (9S0hhvmvbRKS8513K2xo8H)
+ *
+ * ── 3-Layer cascade ──────────────────────────────────────────────────────────
+ *
+ *   LAYER 1  swatches     Raw hex palettes: apple, blue, green, grey,
+ *                          mariner, red, yellow
+ *            (CSS prefix)  --{palette}-{step}
+ *
+ *   LAYER 2  color-theme  Semantic intent aliases that reference Layer 1.
+ *                          Maps intent names (brand, danger, positive …) to
+ *                          the correct palette for each usage category.
+ *            (CSS prefix)  --ct-{intent}-{step}
+ *
+ *   LAYER 3  color-modes  Usage tokens that reference Layer 2.  These are
+ *                          the vars you actually use in component code.
+ *            (CSS prefix)  --sds-color-{category}-{intent}-{variant}
+ *
+ * ── Split brand intent ───────────────────────────────────────────────────────
+ *   background/brand + text/brand  →  apple  (green)
+ *   border/brand + icon/brand      →  mariner (blue)
+ *
+ * ── Stub collections (not yet accessible via API) ────────────────────────────
+ *   dimensions · opacity · border-width · elevation
+ *   → Open a component node in Figma Desktop and run get_variable_defs
+ *     to populate these sections.
+ */
+
+:root {
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     LAYER 1 — SWATCHES
+     Raw hex values.  Never reference these directly in components.
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  /* Apple (brand background & text) */
+  --apple-50:  #f1fcf1;
+  --apple-100: #dff9e0;
+  --apple-200: #c0f2c2;
+  --apple-300: #8fe694;
+  --apple-400: #56d25e;
+  --apple-500: #2fb738;
+  --apple-600: #219829;
+  --apple-700: #1e7724;
+  --apple-800: #1c5f22;
+  --apple-900: #194e1e;
+  --apple-950: #082b0c;
+
+  /* Blue / Indigo (utilities, focus rings) */
+  --blue-50:  #e8f1ff;
+  --blue-100: #e0ecff;
+  --blue-200: #c7dbfe;
+  --blue-300: #a5c2fc;
+  --blue-400: #819ff8;
+  --blue-500: #637cf1;
+  --blue-600: #4656e5;
+  --blue-700: #3844ca;
+  --blue-800: #303ba3;
+  --blue-900: #2e3881;
+  --blue-950: #1b1f4b;
+
+  /* Green (positive / success) */
+  --green-50:  #e2f8f0;
+  --green-100: #d6f5e8;
+  --green-200: #b0ead5;
+  --green-300: #7dd8be;
+  --green-400: #47c0a1;
+  --green-500: #25a488;
+  --green-600: #17846e;
+  --green-700: #126a5a;
+  --green-800: #115448;
+  --green-900: #0f453d;
+  --green-950: #072722;
+
+  /* Grey (neutral, default) */
+  --grey-00:  #ffffff;
+  --grey-50:  #fafafa;
+  --grey-100: #e5e5e8;
+  --grey-200: #cfd0d2;
+  --grey-300: #adafb3;
+  --grey-400: #83848d;
+  --grey-500: #686972;
+  --grey-600: #595961;
+  --grey-700: #4c4d52;
+  --grey-800: #434347;
+  --grey-900: #3b3b3e;
+  --grey-950: #29292c;
+
+  /* Mariner (brand border & icon) */
+  --mariner-50:  #eff8ff;
+  --mariner-100: #dbeffe;
+  --mariner-200: #bfe4fe;
+  --mariner-300: #93d4fd;
+  --mariner-400: #60bafa;
+  --mariner-500: #3b9cf6;
+  --mariner-600: #257feb;
+  --mariner-700: #1d68d8;
+  --mariner-800: #1e54af;
+  --mariner-900: #1e498a;
+  --mariner-950: #172d54;
+
+  /* Red (danger) */
+  --red-50:  #fef3f2;
+  --red-100: #ffe8e5;
+  --red-200: #ffcec8;
+  --red-300: #ffada2;
+  --red-400: #fd7d6c;
+  --red-500: #f5533e;
+  --red-600: #e33620;
+  --red-700: #bf2916;
+  --red-800: #9d2617;
+  --red-900: #83261a;
+  --red-950: #470f08;
+
+  /* Yellow (warning) */
+  --yellow-50:  #fdf3d8;
+  --yellow-100: #feeec3;
+  --yellow-200: #fddb8b;
+  --yellow-300: #fcbf48;
+  --yellow-400: #f8a317;
+  --yellow-500: #e88a0a;
+  --yellow-600: #c86606;
+  --yellow-700: #a04708;
+  --yellow-800: #84380f;
+  --yellow-900: #702e13;
+  --yellow-950: #421506;
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     LAYER 2 — COLOR-THEME
+     Semantic intent aliases.  Each intent maps to one palette from Layer 1.
+     Naming: --ct-{intent}-{step}
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  /* brand → apple  (used by background/* and text/* brand tokens) */
+  --ct-brand-50:  var(--apple-50);
+  --ct-brand-100: var(--apple-100);
+  --ct-brand-200: var(--apple-200);
+  --ct-brand-300: var(--apple-300);
+  --ct-brand-400: var(--apple-400);
+  --ct-brand-500: var(--apple-500);
+  --ct-brand-600: var(--apple-600);
+  --ct-brand-700: var(--apple-700);
+  --ct-brand-800: var(--apple-800);
+  --ct-brand-900: var(--apple-900);
+  --ct-brand-950: var(--apple-950);
+
+  /* ui-brand → mariner  (used by border/* and icon/* brand tokens) */
+  --ct-ui-brand-50:  var(--mariner-50);
+  --ct-ui-brand-100: var(--mariner-100);
+  --ct-ui-brand-200: var(--mariner-200);
+  --ct-ui-brand-300: var(--mariner-300);
+  --ct-ui-brand-400: var(--mariner-400);
+  --ct-ui-brand-500: var(--mariner-500);
+  --ct-ui-brand-600: var(--mariner-600);
+  --ct-ui-brand-700: var(--mariner-700);
+  --ct-ui-brand-800: var(--mariner-800);
+  --ct-ui-brand-900: var(--mariner-900);
+  --ct-ui-brand-950: var(--mariner-950);
+
+  /* danger → red */
+  --ct-danger-50:  var(--red-50);
+  --ct-danger-100: var(--red-100);
+  --ct-danger-200: var(--red-200);
+  --ct-danger-300: var(--red-300);
+  --ct-danger-400: var(--red-400);
+  --ct-danger-500: var(--red-500);
+  --ct-danger-600: var(--red-600);
+  --ct-danger-700: var(--red-700);
+  --ct-danger-800: var(--red-800);
+  --ct-danger-900: var(--red-900);
+  --ct-danger-950: var(--red-950);
+
+  /* positive → green */
+  --ct-positive-50:  var(--green-50);
+  --ct-positive-100: var(--green-100);
+  --ct-positive-200: var(--green-200);
+  --ct-positive-300: var(--green-300);
+  --ct-positive-400: var(--green-400);
+  --ct-positive-500: var(--green-500);
+  --ct-positive-600: var(--green-600);
+  --ct-positive-700: var(--green-700);
+  --ct-positive-800: var(--green-800);
+  --ct-positive-900: var(--green-900);
+  --ct-positive-950: var(--green-950);
+
+  /* warning → yellow */
+  --ct-warning-50:  var(--yellow-50);
+  --ct-warning-100: var(--yellow-100);
+  --ct-warning-200: var(--yellow-200);
+  --ct-warning-300: var(--yellow-300);
+  --ct-warning-400: var(--yellow-400);
+  --ct-warning-500: var(--yellow-500);
+  --ct-warning-600: var(--yellow-600);
+  --ct-warning-700: var(--yellow-700);
+  --ct-warning-800: var(--yellow-800);
+  --ct-warning-900: var(--yellow-900);
+  --ct-warning-950: var(--yellow-950);
+
+  /* neutral → grey */
+  --ct-neutral-00:  var(--grey-00);
+  --ct-neutral-50:  var(--grey-50);
+  --ct-neutral-100: var(--grey-100);
+  --ct-neutral-200: var(--grey-200);
+  --ct-neutral-300: var(--grey-300);
+  --ct-neutral-400: var(--grey-400);
+  --ct-neutral-500: var(--grey-500);
+  --ct-neutral-600: var(--grey-600);
+  --ct-neutral-700: var(--grey-700);
+  --ct-neutral-800: var(--grey-800);
+  --ct-neutral-900: var(--grey-900);
+  --ct-neutral-950: var(--grey-950);
+
+  /* blue (utilities / indigo / pink in Figma CSS naming) */
+  --ct-blue-50:  var(--blue-50);
+  --ct-blue-100: var(--blue-100);
+  --ct-blue-200: var(--blue-200);
+  --ct-blue-300: var(--blue-300);
+  --ct-blue-400: var(--blue-400);
+  --ct-blue-500: var(--blue-500);
+  --ct-blue-600: var(--blue-600);
+  --ct-blue-700: var(--blue-700);
+  --ct-blue-800: var(--blue-800);
+  --ct-blue-900: var(--blue-900);
+  --ct-blue-950: var(--blue-950);
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     LAYER 2 — PRIMITIVE CSS VAR EXPORTS  (Figma's own --sds-color-* naming)
+     These are the names Figma exports in the color-modes collection as
+     primitive-scale CSS custom properties.  They are aliases of Layer 1.
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  /* Figma calls the apple scale "brand" in its CSS exports */
+  --sds-color-brand-100:  var(--apple-50);
+  --sds-color-brand-200:  var(--apple-200);
+  --sds-color-brand-300:  var(--apple-300);
+  --sds-color-brand-400:  var(--apple-400);
+  --sds-color-brand-500:  var(--apple-500);
+  --sds-color-brand-600:  var(--apple-600);
+  --sds-color-brand-700:  var(--apple-700);
+  --sds-color-brand-800:  var(--apple-800);
+  --sds-color-brand-900:  var(--apple-900);
+  --sds-color-brand-1000: var(--apple-950);
+
+  /* Figma calls the blue/indigo scale "pink" in its CSS exports */
+  --sds-color-pink-100:  var(--blue-50);
+  --sds-color-pink-200:  var(--blue-200);
+  --sds-color-pink-300:  var(--blue-300);
+  --sds-color-pink-400:  var(--blue-400);
+  --sds-color-pink-500:  var(--blue-500);
+  --sds-color-pink-600:  var(--blue-600);
+  --sds-color-pink-700:  var(--blue-700);
+  --sds-color-pink-800:  var(--blue-800);
+  --sds-color-pink-900:  var(--blue-900);
+  --sds-color-pink-1000: var(--blue-950);
+
+  /* Gray = grey */
+  --sds-color-gray-100:  var(--grey-00);
+  --sds-color-gray-200:  var(--grey-200);
+  --sds-color-gray-300:  var(--grey-300);
+  --sds-color-gray-400:  var(--grey-400);
+  --sds-color-gray-500:  var(--grey-500);
+  --sds-color-gray-600:  var(--grey-600);
+  --sds-color-gray-700:  var(--grey-700);
+  --sds-color-gray-800:  var(--grey-800);
+  --sds-color-gray-900:  var(--grey-900);
+  --sds-color-gray-1000: var(--grey-950);
+
+  /* Red */
+  --sds-color-red-100:  var(--red-50);
+  --sds-color-red-200:  var(--red-200);
+  --sds-color-red-300:  var(--red-300);
+  --sds-color-red-400:  var(--red-400);
+  --sds-color-red-500:  var(--red-500);
+  --sds-color-red-600:  var(--red-600);
+  --sds-color-red-700:  var(--red-700);
+  --sds-color-red-800:  var(--red-800);
+  --sds-color-red-900:  var(--red-900);
+  --sds-color-red-1000: var(--red-950);
+
+  /* Green */
+  --sds-color-green-100:  var(--green-50);
+  --sds-color-green-200:  var(--green-200);
+  --sds-color-green-300:  var(--green-300);
+  --sds-color-green-400:  var(--green-400);
+  --sds-color-green-500:  var(--green-500);
+  --sds-color-green-600:  var(--green-600);
+  --sds-color-green-700:  var(--green-700);
+  --sds-color-green-800:  var(--green-800);
+  --sds-color-green-900:  var(--green-900);
+  --sds-color-green-1000: var(--green-950);
+
+  /* Yellow */
+  --sds-color-yellow-100:  var(--yellow-50);
+  --sds-color-yellow-200:  var(--yellow-200);
+  --sds-color-yellow-300:  var(--yellow-300);
+  --sds-color-yellow-400:  var(--yellow-400);
+  --sds-color-yellow-500:  var(--yellow-500);
+  --sds-color-yellow-600:  var(--yellow-600);
+  --sds-color-yellow-700:  var(--yellow-700);
+  --sds-color-yellow-800:  var(--yellow-800);
+  --sds-color-yellow-900:  var(--yellow-900);
+  --sds-color-yellow-1000: var(--yellow-950);
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     LAYER 3 — COLOR-MODES  (semantic usage tokens)
+     These reference Layer 2 (color-theme).  Use ONLY these in component code.
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  /* ── Background ──────────────────────────────────────────────────────────── */
+
+  /* brand → --ct-ui-brand-* (mariner / blue) — matches colors.js semanticTokens.background.brand/* */
+  --sds-color-background-brand-default:           var(--ct-ui-brand-800);  /* #1E54AF */
+  --sds-color-background-brand-hover:             var(--ct-ui-brand-900);  /* #1E498A */
+  --sds-color-background-brand-secondary:         var(--ct-ui-brand-200);  /* #BFE4FE */
+  --sds-color-background-brand-secondary-hover:   var(--ct-ui-brand-300);  /* #93D4FD */
+  --sds-color-background-brand-tertiary:          var(--ct-ui-brand-100);  /* #DBEFFE */
+  --sds-color-background-brand-tertiary-hover:    var(--ct-ui-brand-200);  /* #BFE4FE */
+
+  /* default → --ct-neutral-* (grey) */
+  --sds-color-background-base-default:            var(--ct-neutral-50);
+  --sds-color-background-default-default:         var(--ct-neutral-00);
+  --sds-color-background-default-default-hover:   var(--ct-neutral-100);
+  --sds-color-background-default-secondary:       var(--ct-neutral-100);
+  --sds-color-background-default-secondary-hover: var(--ct-neutral-200);
+  --sds-color-background-default-tertiary:        var(--ct-neutral-300);
+  --sds-color-background-default-tertiary-hover:  var(--ct-neutral-400);
+
+  /* danger → --ct-danger-* (red) */
+  --sds-color-background-danger-default:          var(--ct-danger-500);
+  --sds-color-background-danger-hover:            var(--ct-danger-600);
+  --sds-color-background-danger-secondary:        var(--ct-danger-200);
+  --sds-color-background-danger-secondary-hover:  var(--ct-danger-300);
+  --sds-color-background-danger-tertiary:         var(--ct-danger-100);
+  --sds-color-background-danger-tertiary-hover:   var(--ct-danger-200);
+
+  /* disabled → --ct-neutral-* (grey) */
+  --sds-color-background-disabled-default:        var(--ct-neutral-100);
+
+  /* neutral → --ct-neutral-* (grey) */
+  --sds-color-background-neutral-default:         var(--ct-neutral-700);
+  --sds-color-background-neutral-hover:           var(--ct-neutral-800);
+  --sds-color-background-neutral-secondary:       var(--ct-neutral-300);
+  --sds-color-background-neutral-secondary-hover: var(--ct-neutral-400);
+  --sds-color-background-neutral-tertiary:        var(--ct-neutral-200);
+  --sds-color-background-neutral-tertiary-hover:  var(--ct-neutral-300);
+
+  /* positive → --ct-positive-* (green) */
+  --sds-color-background-positive-default:          var(--ct-positive-500);
+  --sds-color-background-positive-hover:            var(--ct-positive-600);
+  --sds-color-background-positive-secondary:        var(--ct-positive-200);
+  --sds-color-background-positive-secondary-hover:  var(--ct-positive-300);
+  --sds-color-background-positive-tertiary:         var(--ct-positive-100);
+  --sds-color-background-positive-tertiary-hover:   var(--ct-positive-200);
+
+  /* warning → --ct-warning-* (yellow) */
+  --sds-color-background-warning-default:           var(--ct-warning-400);
+  --sds-color-background-warning-hover:             var(--ct-warning-500);
+  --sds-color-background-warning-secondary:         var(--ct-warning-200);
+  --sds-color-background-warning-secondary-hover:   var(--ct-warning-300);
+  --sds-color-background-warning-tertiary:          var(--ct-warning-100);
+  --sds-color-background-warning-tertiary-hover:    var(--ct-warning-200);
+
+  /* utilities (raw values — no palette alias possible) */
+  --sds-color-background-utilities-blanket:     #000000b2;
+  --sds-color-background-utilities-overlay:     #00000080;
+  --sds-color-background-utilities-scrim:       #ffffffcc;
+  --sds-color-background-utilities-measurement: var(--ct-blue-200);
+
+  /* ── Text ─────────────────────────────────────────────────────────────────── */
+
+  /* default → --ct-neutral-* (grey) */
+  --sds-color-text-default-default:   var(--ct-neutral-900);
+  --sds-color-text-default-secondary: var(--ct-neutral-500);
+  --sds-color-text-default-tertiary:  var(--ct-neutral-400);
+
+  /* brand → --ct-ui-brand-* (mariner / blue) — matches colors.js semanticTokens.text.brand/* */
+  --sds-color-text-brand-default:             var(--ct-ui-brand-800);  /* #1E54AF */
+  --sds-color-text-brand-secondary:           var(--ct-ui-brand-600);  /* #257FEB */
+  --sds-color-text-brand-tertiary:            var(--ct-ui-brand-500);  /* #3B9CF6 */
+  --sds-color-text-brand-on-brand:            var(--ct-ui-brand-100);  /* #DBEFFE — light text on brand bg */
+  --sds-color-text-brand-on-brand-secondary:  var(--ct-ui-brand-900);  /* #1E498A */
+  --sds-color-text-brand-on-brand-tertiary:   var(--ct-ui-brand-800);  /* #1E54AF */
+
+  /* danger → --ct-danger-* (red) */
+  --sds-color-text-danger-default:              var(--ct-danger-700);
+  --sds-color-text-danger-secondary:            var(--ct-danger-600);
+  --sds-color-text-danger-tertiary:             var(--ct-danger-500);
+  --sds-color-text-danger-on-danger:            var(--ct-danger-100);
+  --sds-color-text-danger-on-danger-secondary:  var(--ct-danger-700);
+  --sds-color-text-danger-on-danger-tertiary:   var(--ct-danger-700);
+
+  /* disabled → --ct-neutral-* (grey) */
+  --sds-color-text-disabled-default:     var(--ct-neutral-200);
+  --sds-color-text-disabled-on-disabled: var(--ct-neutral-300);
+
+  /* neutral → --ct-neutral-* (grey) */
+  --sds-color-text-neutral-default:              var(--ct-neutral-900);
+  --sds-color-text-neutral-secondary:            var(--ct-neutral-700);
+  --sds-color-text-neutral-tertiary:             var(--ct-neutral-600);
+  --sds-color-text-neutral-on-neutral:           var(--ct-neutral-100);
+  --sds-color-text-neutral-on-neutral-secondary: var(--ct-neutral-900);
+  --sds-color-text-neutral-on-neutral-tertiary:  var(--ct-neutral-800);
+
+  /* positive → --ct-positive-* (green) */
+  --sds-color-text-positive-default:               var(--ct-positive-800);
+  --sds-color-text-positive-secondary:             var(--ct-positive-600);
+  --sds-color-text-positive-tertiary:              var(--ct-positive-500);
+  --sds-color-text-positive-on-positive:           var(--ct-positive-100);
+  --sds-color-text-positive-on-positive-secondary: var(--ct-positive-800);
+  --sds-color-text-positive-on-positive-tertiary:  var(--ct-positive-800);
+
+  /* warning → --ct-warning-* (yellow) */
+  --sds-color-text-warning-default:              var(--ct-warning-900);
+  --sds-color-text-warning-secondary:            var(--ct-warning-700);
+  --sds-color-text-warning-tertiary:             var(--ct-warning-600);
+  --sds-color-text-warning-on-warning:           var(--ct-warning-950);
+  --sds-color-text-warning-on-warning-secondary: var(--ct-warning-800);
+  --sds-color-text-warning-on-warning-tertiary:  var(--ct-warning-900);
+
+  /* utilities */
+  --sds-color-text-utilities-text-on-measurement: var(--ct-blue-800);
+  --sds-color-text-utilities-text-on-overlay:     var(--ct-neutral-950);
+
+  /* ── Border ───────────────────────────────────────────────────────────────── */
+
+  /* default → --ct-neutral-* (grey) */
+  --sds-color-border-default-default:   var(--ct-neutral-200);
+  --sds-color-border-default-secondary: var(--ct-neutral-500);
+  --sds-color-border-default-tertiary:  var(--ct-neutral-700);
+
+  /* brand → --ct-ui-brand-* (mariner) */
+  --sds-color-border-brand-default:   var(--ct-ui-brand-800);
+  --sds-color-border-brand-secondary: var(--ct-ui-brand-600);
+  --sds-color-border-brand-tertiary:  var(--ct-ui-brand-500);
+
+  /* danger → --ct-danger-* (red) */
+  --sds-color-border-danger-default:   var(--ct-danger-700);
+  --sds-color-border-danger-secondary: var(--ct-danger-600);
+  --sds-color-border-danger-tertiary:  var(--ct-danger-500);
+
+  /* disabled → --ct-neutral-* (grey) */
+  --sds-color-border-disabled-default: var(--ct-neutral-400);
+
+  /* neutral → --ct-neutral-* (grey) */
+  --sds-color-border-neutral-default:   var(--ct-neutral-900);
+  --sds-color-border-neutral-secondary: var(--ct-neutral-600);
+  --sds-color-border-neutral-tertiary:  var(--ct-neutral-700);
+
+  /* positive → --ct-positive-* (green) */
+  --sds-color-border-positive-default:   var(--ct-positive-800);
+  --sds-color-border-positive-secondary: var(--ct-positive-600);
+  --sds-color-border-positive-tertiary:  var(--ct-positive-500);
+
+  /* warning → --ct-warning-* (yellow) */
+  --sds-color-border-warning-default:   var(--ct-warning-900);
+  --sds-color-border-warning-secondary: var(--ct-warning-700);
+  --sds-color-border-warning-tertiary:  var(--ct-warning-600);
+
+  /* ── Icon ─────────────────────────────────────────────────────────────────── */
+
+  /* default → --ct-neutral-* (grey) */
+  --sds-color-icon-default-default:   var(--ct-neutral-900);
+  --sds-color-icon-default-secondary: var(--ct-neutral-500);
+  --sds-color-icon-default-tertiary:  var(--ct-neutral-400);
+
+  /* brand → --ct-ui-brand-* (mariner) */
+  --sds-color-icon-brand-default:             var(--ct-ui-brand-800);
+  --sds-color-icon-brand-secondary:           var(--ct-ui-brand-600);
+  --sds-color-icon-brand-tertiary:            var(--ct-ui-brand-500);
+  --sds-color-icon-brand-on-brand:            var(--ct-ui-brand-100);
+  --sds-color-icon-brand-on-brand-secondary:  var(--ct-ui-brand-900);
+  --sds-color-icon-brand-on-brand-tertiary:   var(--ct-ui-brand-800);
+
+  /* danger → --ct-danger-* (red) */
+  --sds-color-icon-danger-default:              var(--ct-danger-700);
+  --sds-color-icon-danger-secondary:            var(--ct-danger-600);
+  --sds-color-icon-danger-tertiary:             var(--ct-danger-500);
+  --sds-color-icon-danger-on-danger:            var(--ct-danger-100);
+  --sds-color-icon-danger-on-danger-secondary:  var(--ct-danger-700);
+  --sds-color-icon-danger-on-danger-tertiary:   var(--ct-danger-700);
+
+  /* disabled → --ct-neutral-* (grey) */
+  --sds-color-icon-disabled-default:     var(--ct-neutral-300);
+  --sds-color-icon-disabled-on-disabled: var(--ct-neutral-400);
+
+  /* neutral → --ct-neutral-* (grey) */
+  --sds-color-icon-neutral-default:              var(--ct-neutral-900);
+  --sds-color-icon-neutral-secondary:            var(--ct-neutral-700);
+  --sds-color-icon-neutral-tertiary:             var(--ct-neutral-600);
+  --sds-color-icon-neutral-on-neutral:           var(--ct-neutral-100);
+  --sds-color-icon-neutral-on-neutral-secondary: var(--ct-neutral-900);
+  --sds-color-icon-neutral-on-neutral-tertiary:  var(--ct-neutral-800);
+
+  /* positive → --ct-positive-* (green) */
+  --sds-color-icon-positive-default:               var(--ct-positive-800);
+  --sds-color-icon-positive-secondary:             var(--ct-positive-600);
+  --sds-color-icon-positive-tertiary:              var(--ct-positive-500);
+  --sds-color-icon-positive-on-positive:           var(--ct-positive-100);
+  --sds-color-icon-positive-on-positive-secondary: var(--ct-positive-800);
+  --sds-color-icon-positive-on-positive-tertiary:  var(--ct-positive-900);
+
+  /* warning → --ct-warning-* (yellow) */
+  --sds-color-icon-warning-default:              var(--ct-warning-900);
+  --sds-color-icon-warning-secondary:            var(--ct-warning-700);
+  --sds-color-icon-warning-tertiary:             var(--ct-warning-600);
+  --sds-color-icon-warning-on-warning:           var(--ct-warning-950);
+  --sds-color-icon-warning-on-warning-secondary: var(--ct-warning-800);
+  --sds-color-icon-warning-on-warning-tertiary:  var(--ct-warning-900);
+
+  /* utilities */
+  --sds-color-icon-utilities-icon:               var(--ct-blue-600);
+  --sds-color-icon-utilities-icon-on-measurement: var(--ct-blue-800);
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     TYPOGRAPHY
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  /* Font families */
+  --font-family-display: 'Manrope', system-ui, sans-serif;
+  --font-family-text:    'Manrope', system-ui, sans-serif;
+
+  /* Font weights */
+  --font-weight-light:    300;
+  --font-weight-regular:  400;
+  --font-weight-medium:   500;
+  --font-weight-semibold: 600;
+  --font-weight-bold:     700;
+
+  /* Font style */
+  --font-style-italic: italic;
+
+  /* Font sizes — display scale */
+  --font-size-display-2xl: 72px;
+  --font-size-display-xl:  60px;
+  --font-size-display-lg:  48px;
+  --font-size-display-md:  36px;
+  --font-size-display-sm:  30px;
+  --font-size-display-xs:  24px;
+
+  /* Font sizes — text scale */
+  --font-size-text-xl: 20px;
+  --font-size-text-lg: 18px;
+  --font-size-text-md: 16px;
+  --font-size-text-sm: 14px;
+  --font-size-text-xs: 12px;
+
+  /* Line heights — display scale */
+  --line-height-display-2xl: 90px;
+  --line-height-display-xl:  72px;
+  --line-height-display-lg:  60px;
+  --line-height-display-md:  44px;
+  --line-height-display-sm:  38px;
+  --line-height-display-xs:  32px;
+
+  /* Line heights — text scale */
+  --line-height-text-xl: 30px;
+  --line-height-text-lg: 28px;
+  --line-height-text-md: 22px;
+  --line-height-text-sm: 20px;
+  --line-height-text-xs: 18px;
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     SPACING  (confirmed from Figma variable-collections/dimensions.tokens.json)
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --spacing-pt-1:  4px;
+  --spacing-pt-2:  8px;
+  --spacing-pt-3:  12px;
+  --spacing-pt-4:  16px;
+  --spacing-pt-5:  20px;
+  --spacing-pt-6:  24px;
+  --spacing-pt-8:  32px;
+  --spacing-pt-10: 40px;
+  --spacing-pt-12: 48px;
+  --spacing-pt-14: 56px;
+  --spacing-pt-16: 64px;
+  --spacing-pt-20: 80px;
+  --spacing-pt-24: 96px;
+  --spacing-pt-32: 128px;
+  --spacing-pt-40: 160px;
+  --spacing-pt-48: 192px;
+  --spacing-pt-56: 224px;
+  --spacing-pt-64: 256px;
+
+  /* Corner radius (confirmed from Figma variable-collections/dimensions.tokens.json) */
+  --corner-radius-none: 0px;
+  --corner-radius-xs:   4px;
+  --corner-radius-sm:   8px;
+  --corner-radius-md:   12px;
+  --corner-radius-lg:   16px;
+  --corner-radius-xl:   24px;
+  --corner-radius-2xl:  32px;
+  --corner-radius-full: 9999px;
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     EFFECTS  (confirmed from Figma)
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --effects-focused-shadow-default: var(--ct-blue-200);  /* #c7dbfe */
+  --effects-focused-shadow-danger:  var(--ct-danger-300); /* #ffada2 */
+  --effects-focused-shadow-ring:    var(--grey-00);       /* #ffffff */
+
+  /* Aliases with --sds-color-effects-* prefix (used by button.module.css and components) */
+  --sds-color-effects-focused-shadow-default: var(--effects-focused-shadow-default);
+  --sds-color-effects-focused-shadow-danger:  var(--effects-focused-shadow-danger);
+  --sds-color-effects-focused-shadow-ring:    var(--effects-focused-shadow-ring);
+
+  /* Opacity alias used by disabled states in components */
+  --sds-opacity-disabled: var(--opacity-40); /* 0.40 */
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     DIMENSIONS
+     NOTE: Values below are standard design-system defaults.
+     To confirm exact Figma values: open a component node in Figma Desktop
+     and run get_variable_defs to verify the dimensions collection.
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --dimension-0:   0px;
+  --dimension-1:   4px;
+  --dimension-2:   8px;
+  --dimension-3:  12px;
+  --dimension-4:  16px;
+  --dimension-5:  20px;
+  --dimension-6:  24px;
+  --dimension-8:  32px;
+  --dimension-10: 40px;
+  --dimension-12: 48px;
+  --dimension-14: 56px;
+  --dimension-16: 64px;
+  --dimension-20: 80px;
+  --dimension-24: 96px;
+  --dimension-32: 128px;
+  --dimension-40: 160px;
+  --dimension-48: 192px;
+  --dimension-56: 224px;
+  --dimension-64: 256px;
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     OPACITY
+     NOTE: Values below are standard design-system defaults.
+     To confirm exact Figma values: open a component node in Figma Desktop
+     and run get_variable_defs to verify the opacity collection.
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  --opacity-0:        0;
+  --opacity-4:        0.04;
+  --opacity-8:        0.08;
+  --opacity-12:       0.12;
+  --opacity-16:       0.16;
+  --opacity-24:       0.24;
+  --opacity-32:       0.32;
+  --opacity-40:       0.40;
+  --opacity-50:       0.50;
+  --opacity-64:       0.64;
+  --opacity-72:       0.72;
+  --opacity-75:       0.75;
+  --opacity-80:       0.80;
+  --opacity-88:       0.88;
+  --opacity-100:      1;
+  /* Named aliases */
+  --opacity-disabled: var(--opacity-40); /* 40% — disabled state */
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     BORDER WIDTH
+     NOTE: Values below are standard design-system defaults.
+     To confirm exact Figma values: open a component node in Figma Desktop
+     and run get_variable_defs to verify the border collection.
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  /* Canonical names from border.tokens.json */
+  --border-width-none: 0px;
+  --border-width-sm:   1px;
+  --border-width-md:   2px;
+  --border-width-lg:   4px;
+  /* Legacy aliases (keep for backwards compat) */
+  --border-width-thin:    var(--border-width-sm);
+  --border-width-default: var(--border-width-md);
+  --border-width-thick:   var(--border-width-lg);
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     ELEVATION  (box shadows)
+     NOTE: Values below are standard design-system defaults.
+     To confirm exact Figma values: open a component node in Figma Desktop
+     and run get_variable_defs to verify the elevation collection.
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  /* Figma elevation values (blur-only model, 10% black) */
+  --elevation-none: none;
+  --elevation-sm:   0px 2px 16px rgba(0, 0, 0, 0.10);
+  --elevation-md:   0px 6px 16px rgba(0, 0, 0, 0.10);
+  --elevation-lg:   0px 15px 16px rgba(0, 0, 0, 0.10);
+  --elevation-xl:   0px 25px 16px rgba(0, 0, 0, 0.10);
+  /* Shadow style name aliases (Figma: shadow-sm etc.) */
+  --shadow-sm: var(--elevation-sm);
+  --shadow-md: var(--elevation-md);
+  --shadow-lg: var(--elevation-lg);
+  --shadow-xl: var(--elevation-xl);
+  /* Focus shadow composite styles */
+  --focus-shadow-default: 0px 0px 0px 4px #C7DBFE, 0px 0px 0px 2px #FFFFFF;
+  --focus-shadow-error:   0px 0px 0px 4px #FFADA2, 0px 0px 0px 2px #FFFFFF;
+}
