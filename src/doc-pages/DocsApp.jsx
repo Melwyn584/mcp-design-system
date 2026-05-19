@@ -21,7 +21,7 @@ import { CheckboxPage }       from './CheckboxPage'
 import { RadioButtonPage }    from './RadioButtonPage'
 import { ToggleSwitchPage }   from './ToggleSwitchPage'
 import { BadgePage }          from './BadgePage'
-import { LoaderPage }         from './LoaderPage'
+import { SpinnerPage }        from './SpinnerPage'
 import { PlaceholderLogoPage } from './PlaceholderLogoPage'
 
 const docPages = {
@@ -47,7 +47,7 @@ const docPages = {
   'comp-radio-button':     RadioButtonPage,
   'comp-toggle-switch':    ToggleSwitchPage,
   'comp-badge':            BadgePage,
-  'comp-loader':           LoaderPage,
+  'comp-spinner':          SpinnerPage,
   'comp-placeholder-logo': PlaceholderLogoPage,
 }
 

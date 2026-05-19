@@ -35,7 +35,7 @@ const navSections = [
       { id: 'comp-radio-button',   label: 'Radio Button',     icon: '⬡' },
       { id: 'comp-toggle-switch',  label: 'Toggle Switch',    icon: '⬡' },
       { id: 'comp-badge',          label: 'Badge',            icon: '⬡' },
-      { id: 'comp-loader',         label: 'Loader Indicators', icon: '⬡' },
+      { id: 'comp-spinner',        label: 'Spinner',           icon: '⬡' },
       { id: 'comp-placeholder-logo', label: 'Placeholder Logo', icon: '⬡' },
     ],
   },

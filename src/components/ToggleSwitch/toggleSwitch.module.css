@@ -1,0 +1,85 @@
+/* ─── Wrapper (label element, the track) ──────────────────────────────────── */
+
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  cursor: pointer;
+  border-radius: var(--corner-radius-full);
+  vertical-align: middle;
+}
+
+.wrapper.disabled {
+  opacity: var(--sds-opacity-disabled);
+  pointer-events: none;
+}
+
+/* ─── Sizes (track dimensions; thumb travels within) ──────────────────────── */
+
+.small  { width: 36px; height: 20px; }
+.medium { width: 44px; height: 24px; }
+
+/* ─── Hidden native input ─────────────────────────────────────────────────── */
+
+.input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: inherit;
+  margin: 0;
+  z-index: 1;
+}
+
+/* ─── Track ───────────────────────────────────────────────────────────────── */
+
+.track {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--corner-radius-full);
+  transition: background-color 150ms ease, box-shadow 150ms ease;
+}
+
+.unchecked .track {
+  background-color: var(--sds-color-background-default-secondary);
+}
+
+.unchecked:hover .track {
+  background-color: var(--sds-color-background-default-secondary-hover);
+}
+
+.checked .track {
+  background-color: var(--sds-color-background-brand-default);
+}
+
+.checked:hover .track {
+  background-color: var(--sds-color-background-brand-hover);
+}
+
+.input:focus-visible ~ .track {
+  box-shadow:
+    0 0 0 2px var(--sds-color-effects-focused-shadow-ring),
+    0 0 0 4px var(--sds-color-effects-focused-shadow-default);
+}
+
+/* ─── Thumb (movable circle) ──────────────────────────────────────────────── */
+
+.thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border-radius: var(--corner-radius-full);
+  background-color: var(--sds-color-background-default-default);
+  border: 1px solid var(--sds-color-border-default-default);
+  box-sizing: border-box;
+  transition: transform 150ms ease;
+  pointer-events: none;
+}
+
+.small .thumb  { width: 16px; height: 16px; }
+.medium .thumb { width: 20px; height: 20px; }
+
+/* Travel = trackWidth − 2·padding − thumb (36−4−16=16, 44−4−20=20) */
+.small.checked .thumb  { transform: translateX(16px); }
+.medium.checked .thumb { transform: translateX(20px); }

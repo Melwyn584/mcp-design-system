@@ -1,0 +1,118 @@
+/* ─── Root ────────────────────────────────────────────────────────────────── */
+
+.root {
+  display: block;
+  width: 100%;
+}
+
+.root.disabled {
+  opacity: var(--sds-opacity-disabled);
+  pointer-events: none;
+}
+
+/* ─── Input box ──────────────────────────────────────────────────────────── */
+
+.box {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  width: 100%;
+  padding: var(--spacing-pt-3) var(--spacing-pt-4); /* 12 px 16 px */
+  background-color: var(--sds-color-background-default-default);
+  border: 1px solid var(--sds-color-border-default-default);
+  border-radius: var(--corner-radius-md);
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: box-shadow 100ms ease;
+}
+
+.box:focus-within {
+  box-shadow:
+    0 0 0 2px var(--sds-color-effects-focused-shadow-ring),
+    0 0 0 4px var(--sds-color-effects-focused-shadow-default);
+}
+
+/* ─── Inner content row ──────────────────────────────────────────────────── */
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-pt-3); /* 12 px — between icon / input / clear */
+  flex: 1;
+  min-width: 0;
+}
+
+/* ─── Search icon (left, only when empty) ────────────────────────────────── */
+
+.searchIcon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  /* Matches the visual weight of the placeholder text (40 % opacity) */
+  opacity: var(--sds-opacity-disabled);
+}
+
+/* ─── Text input ─────────────────────────────────────────────────────────── */
+
+.input {
+  flex: 1 0 0;
+  min-width: 0;
+  height: 24px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-text-md);
+  line-height: var(--line-height-text-md);
+  color: var(--sds-color-text-default-default);
+  -webkit-font-smoothing: antialiased;
+}
+
+.input::placeholder {
+  color: var(--sds-color-text-default-default);
+  opacity: var(--sds-opacity-disabled);
+}
+
+/* Hide the native browser × button that appears on type="search" */
+.input::-webkit-search-cancel-button,
+.input::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
+}
+
+.input:disabled {
+  cursor: not-allowed;
+}
+
+/* ─── Clear button (right, only when value exists) ───────────────────────── */
+
+.clearBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+}
+
+.clearBtn:disabled {
+  cursor: not-allowed;
+}
+
+.clearIcon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}

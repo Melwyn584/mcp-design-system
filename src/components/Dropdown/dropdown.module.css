@@ -1,0 +1,227 @@
+/* ─── Root wrapper ─────────────────────────────────────────────────────────── */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 11px;
+  width: 100%;
+}
+
+.root.disabled {
+  opacity: var(--sds-opacity-disabled);
+  pointer-events: none;
+}
+
+/* ─── Label row ──────────────────────────────────────────────────────────── */
+
+.labelRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-text-md);
+  line-height: var(--line-height-text-md);
+  color: var(--sds-color-text-default-default);
+}
+
+.label {
+  flex: 1 0 0;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.secondaryLabel {
+  flex-shrink: 0;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* ─── Trigger wrapper (positions the menu relative to trigger) ───────────── */
+
+.triggerWrap {
+  position: relative;
+  width: 100%;
+}
+
+/* ─── Trigger button ─────────────────────────────────────────────────────── */
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-pt-4);
+  width: 100%;
+  height: 48px;
+  padding: var(--spacing-pt-3) var(--spacing-pt-4);
+  background-color: var(--sds-color-background-default-default);
+  border: 1px solid var(--sds-color-border-default-default);
+  border-radius: var(--corner-radius-md);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 100ms ease, box-shadow 100ms ease;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+.trigger:hover:not(:disabled) {
+  border-color: var(--sds-color-border-default-secondary);
+}
+
+.trigger:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--sds-color-effects-focused-shadow-ring),
+    0 0 0 4px var(--sds-color-effects-focused-shadow-default);
+}
+
+/* open = the menu is showing: apply the blue ring */
+.trigger--open:not(.trigger--error) {
+  box-shadow:
+    0 0 0 2px var(--sds-color-effects-focused-shadow-ring),
+    0 0 0 4px var(--sds-color-effects-focused-shadow-default);
+}
+
+/* error state */
+.trigger--error {
+  border-color: var(--sds-color-border-danger-default);
+}
+
+.trigger--error:focus-visible,
+.trigger--error.trigger--open {
+  box-shadow:
+    0 0 0 2px var(--sds-color-effects-focused-shadow-ring),
+    0 0 0 4px var(--sds-color-effects-focused-shadow-danger);
+}
+
+/* ─── Trigger content ────────────────────────────────────────────────────── */
+
+.placeholder {
+  flex: 1 0 0;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-text-md);
+  line-height: var(--line-height-text-md);
+  color: var(--sds-color-text-default-default);
+  opacity: var(--sds-opacity-disabled);
+}
+
+.value {
+  flex: 1 0 0;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-text-md);
+  line-height: var(--line-height-text-md);
+  color: var(--sds-color-text-default-default);
+}
+
+.chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--sds-color-text-default-default);
+}
+
+.chevron svg {
+  width: 20px;
+  height: 20px;
+}
+
+.chevron svg path {
+  fill: currentColor;
+}
+
+/* ─── Dropdown menu ──────────────────────────────────────────────────────── */
+
+.menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 200;
+  list-style: none;
+  margin: 0;
+  padding: var(--spacing-pt-2) 0;
+  background-color: var(--sds-color-background-default-default);
+  border: 1px solid var(--sds-color-border-default-default);
+  border-radius: var(--corner-radius-md);
+  box-shadow: var(--elevation-md);
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+/* ─── Option item ────────────────────────────────────────────────────────── */
+
+.option {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 var(--spacing-pt-4);
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-text-md);
+  line-height: var(--line-height-text-md);
+  color: var(--sds-color-text-default-default);
+  cursor: pointer;
+  outline: none;
+  transition: background-color 80ms ease;
+}
+
+.option:hover,
+.option:focus {
+  background-color: var(--sds-color-background-default-default-hover);
+}
+
+.option--selected {
+  font-weight: var(--font-weight-semibold);
+  color: var(--sds-color-text-brand-default, var(--accent, #1E54AF));
+  background-color: var(--sds-color-background-brand-tertiary, #EFF8FF);
+}
+
+.option--selected:hover,
+.option--selected:focus {
+  background-color: var(--sds-color-background-brand-tertiary, #EFF8FF);
+}
+
+.empty {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 var(--spacing-pt-4);
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-text-md);
+  color: var(--sds-color-text-default-tertiary);
+  cursor: default;
+}
+
+/* ─── Messages ───────────────────────────────────────────────────────────── */
+
+.message {
+  width: 100%;
+  margin: 0;
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-text-md);
+  line-height: var(--line-height-text-md);
+}
+
+.help {
+  color: var(--sds-color-text-default-tertiary);
+}
+
+.error {
+  color: var(--sds-color-text-danger-default);
+}

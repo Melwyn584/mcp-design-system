@@ -1,0 +1,110 @@
+/* ─── Base ────────────────────────────────────────────────────────────────── */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-pt-1);
+  padding: var(--spacing-pt-1) var(--spacing-pt-3);
+  border-radius: var(--corner-radius-full);
+  border: 1px solid transparent;       /* keeps filled & stroke the same size */
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-text-xs);
+  line-height: var(--line-height-text-xs);
+  white-space: nowrap;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.badge.disabled {
+  opacity: var(--sds-opacity-disabled);
+}
+
+/* ─── Icon + text ─────────────────────────────────────────────────────────── */
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+}
+
+.icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.icon svg path {
+  fill: currentColor;
+}
+
+.text {
+  word-break: break-word;
+}
+
+/* ─── Filled (background + colored text) ──────────────────────────────────── */
+
+.filled.brand {
+  background-color: var(--sds-color-background-brand-tertiary);
+  color: var(--sds-color-text-brand-on-brand-tertiary);
+}
+
+.filled.accent {
+  background-color: var(--apple-100);
+  color: var(--apple-800);
+}
+
+.filled.danger {
+  background-color: var(--sds-color-background-danger-tertiary);
+  color: var(--sds-color-text-danger-on-danger-tertiary);
+}
+
+.filled.warning {
+  background-color: var(--sds-color-background-warning-tertiary);
+  color: var(--sds-color-text-warning-on-warning-tertiary);
+}
+
+.filled.success {
+  background-color: var(--sds-color-background-positive-tertiary);
+  color: var(--sds-color-text-positive-on-positive-tertiary);
+}
+
+.filled.neutral {
+  background-color: var(--sds-color-background-neutral-tertiary);
+  color: var(--sds-color-text-neutral-on-neutral-tertiary);
+}
+
+/* ─── Stroke (transparent background + border) ────────────────────────────── */
+
+.stroke.brand {
+  border-color: var(--sds-color-border-brand-secondary);
+  color: var(--sds-color-text-brand-secondary);
+}
+
+.stroke.accent {
+  border-color: var(--apple-600);
+  color: var(--apple-600);
+}
+
+.stroke.danger {
+  border-color: var(--sds-color-border-danger-secondary);
+  color: var(--sds-color-text-danger-secondary);
+}
+
+.stroke.warning {
+  border-color: var(--sds-color-border-warning-secondary);
+  color: var(--sds-color-text-warning-secondary);
+}
+
+.stroke.success {
+  border-color: var(--sds-color-border-positive-secondary);
+  color: var(--sds-color-text-positive-secondary);
+}
+
+.stroke.neutral {
+  border-color: var(--sds-color-border-neutral-secondary);
+  color: var(--sds-color-text-neutral-secondary);
+}

@@ -1,0 +1,29 @@
+/* ─── Spinner ─────────────────────────────────────────────────────────────── */
+
+.spinner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;          /* always square, never stretch */
+  line-height: 0;
+}
+
+.svg {
+  display: block;
+  animation: spinner-rotate 0.8s linear infinite;  /* continuous, infinite, linear */
+}
+
+.track {
+  stroke: var(--sds-color-border-default-default);
+}
+
+.arc {
+  stroke: var(--sds-color-text-brand-secondary);
+  stroke-linecap: round;
+}
+
+@keyframes spinner-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}

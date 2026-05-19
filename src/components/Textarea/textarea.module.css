@@ -1,0 +1,125 @@
+/* ─── Wrapper — vertical stack: label row / textarea / help / error ──────── */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 11px;
+  width: 100%;
+}
+
+.root.disabled {
+  opacity: var(--sds-opacity-disabled);
+  pointer-events: none;
+}
+
+/* ─── Label row ──────────────────────────────────────────────────────────── */
+
+.labelRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-text-md);
+  line-height: var(--line-height-text-md);
+  color: var(--sds-color-text-default-default);
+}
+
+.label {
+  flex: 1 0 0;
+  min-width: 0;
+}
+
+.secondaryLabel {
+  flex-shrink: 0;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* ─── Textarea box ───────────────────────────────────────────────────────── */
+
+.box {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 128px;
+  padding: var(--spacing-pt-3) var(--spacing-pt-4);
+  background-color: var(--sds-color-background-default-default);
+  border: 1px solid var(--sds-color-border-default-default);
+  border-radius: var(--corner-radius-md);
+  overflow: hidden;
+  transition: border-color 100ms ease, box-shadow 100ms ease;
+  box-sizing: border-box;
+}
+
+.box:hover:not(:has(.textarea:disabled)) {
+  border-color: var(--sds-color-border-default-secondary);
+}
+
+.box:focus-within:not(.box--error) {
+  box-shadow:
+    0 0 0 2px var(--sds-color-effects-focused-shadow-ring),
+    0 0 0 4px var(--sds-color-effects-focused-shadow-default);
+}
+
+.box--error {
+  border-color: var(--sds-color-border-danger-default);
+}
+
+.box--error:focus-within {
+  box-shadow:
+    0 0 0 2px var(--sds-color-effects-focused-shadow-ring),
+    0 0 0 4px var(--sds-color-effects-focused-shadow-danger);
+}
+
+/* ─── Native textarea ────────────────────────────────────────────────────── */
+
+.textarea {
+  flex: 1 0 0;
+  min-width: 0;
+  width: 100%;
+  min-height: 104px; /* box height minus vertical padding */
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  outline: none;
+  resize: none;
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-text-md);
+  line-height: var(--line-height-text-md);
+  color: var(--sds-color-text-default-default);
+  -webkit-font-smoothing: antialiased;
+}
+
+.textarea::placeholder {
+  color: var(--sds-color-text-default-default);
+  opacity: var(--sds-opacity-disabled);
+}
+
+.textarea:disabled {
+  cursor: not-allowed;
+}
+
+/* ─── Messages ───────────────────────────────────────────────────────────── */
+
+.message {
+  width: 100%;
+  margin: 0;
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-text-md);
+  line-height: var(--line-height-text-md);
+}
+
+.help {
+  color: var(--sds-color-text-default-tertiary);
+}
+
+.error {
+  color: var(--sds-color-text-danger-default);
+}

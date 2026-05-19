@@ -3,6 +3,7 @@ import { Hero } from '../sections/Hero'
 import { Navbar } from '../sections/Navbar/Navbar'
 import { Categories } from '../sections/Categories'
 import { FreshArrivals } from '../sections/FreshArrivals'
+import { About } from '../sections/About'
 import { Footer } from '../sections/Footer'
 
 const FRESH_PRODUCTS = [
@@ -71,6 +72,7 @@ export function HomePage() {
         products={FRESH_PRODUCTS}
         onViewAll={() => console.log('View all clicked')}
       />
+      <About image="https://www.figma.com/api/mcp/asset/67b62d94-e586-4c03-892e-18b13fddcadb" />
       <Footer
         paymentCards={[
           { src: 'https://www.figma.com/api/mcp/asset/1f495be7-e3aa-4aaa-afda-4037ff3beba1', alt: 'Visa' },

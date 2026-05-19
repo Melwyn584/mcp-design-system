@@ -1,0 +1,276 @@
+/* ─── Root ────────────────────────────────────────────────────────────────── */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 11px; /* Figma spec: 11 px between label / box / messages */
+  width: 100%;
+}
+
+.root.disabled {
+  opacity: var(--sds-opacity-disabled);
+  pointer-events: none;
+}
+
+/* ─── Label row ──────────────────────────────────────────────────────────── */
+
+.labelRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-pt-3);
+  width: 100%;
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-text-md);
+  line-height: var(--line-height-text-md);
+  color: var(--sds-color-text-default-default);
+}
+
+.label {
+  flex: 1 0 0;
+  min-width: 0;
+}
+
+.secondaryLabel {
+  flex-shrink: 0;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* ─── Input wrap — anchor for absolute dropdown ──────────────────────────── */
+
+.inputWrap {
+  position: relative;
+  width: 100%;
+}
+
+/* ─── Input box ──────────────────────────────────────────────────────────── */
+
+.box {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  width: 100%;
+  padding: var(--spacing-pt-3) var(--spacing-pt-4); /* 12 px 16 px */
+  background-color: var(--sds-color-background-default-default);
+  border: 1px solid var(--sds-color-border-default-default);
+  border-radius: var(--corner-radius-md);
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: box-shadow 100ms ease;
+}
+
+.box:focus-within:not(.box--error) {
+  box-shadow:
+    0 0 0 2px var(--sds-color-effects-focused-shadow-ring),
+    0 0 0 4px var(--sds-color-effects-focused-shadow-default);
+}
+
+.box--error:focus-within {
+  box-shadow:
+    0 0 0 2px var(--sds-color-effects-focused-shadow-ring),
+    0 0 0 4px var(--sds-color-effects-focused-shadow-danger);
+}
+
+/* ─── Country trigger button ─────────────────────────────────────────────── */
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* between flag / dial-code / chevron */
+  flex-shrink: 0;
+  padding: 0;
+  padding-right: 12px; /* space between chevron and divider */
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+  color: var(--sds-color-text-default-default);
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-text-md);
+  line-height: var(--line-height-text-md);
+}
+
+.trigger:disabled {
+  cursor: not-allowed;
+}
+
+/* ─── Dial code ──────────────────────────────────────────────────────────── */
+
+.dialCode {
+  font-weight: var(--font-weight-regular);
+  white-space: nowrap;
+}
+
+/* ─── Chevron ────────────────────────────────────────────────────────────── */
+
+.chevron {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  transition: transform 150ms ease;
+}
+
+/* ─── Vertical divider ───────────────────────────────────────────────────── */
+
+.divider {
+  width: 1px;
+  align-self: stretch;
+  background-color: var(--sds-color-border-default-default);
+  flex-shrink: 0;
+}
+
+/* ─── Phone number input ─────────────────────────────────────────────────── */
+
+.input {
+  flex: 1 0 0;
+  min-width: 0;
+  height: 24px;
+  padding: 0;
+  padding-left: 16px; /* space after divider — mirrors box gap-pt-4 */
+  margin: 0;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-text-md);
+  line-height: var(--line-height-text-md);
+  color: var(--sds-color-text-default-default);
+  -webkit-font-smoothing: antialiased;
+}
+
+.input::placeholder {
+  color: var(--sds-color-text-default-default);
+  opacity: var(--sds-opacity-disabled);
+}
+
+.input:disabled {
+  cursor: not-allowed;
+}
+
+/* ─── Country dropdown ───────────────────────────────────────────────────── */
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 100%;
+  min-width: 260px;
+  background: var(--sds-color-background-default-default);
+  border: 1px solid var(--sds-color-border-default-default);
+  border-radius: var(--corner-radius-md);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  z-index: 9999;
+  overflow: hidden;
+}
+
+/* ── Search ── */
+
+.searchWrap {
+  padding: 8px;
+  border-bottom: 1px solid var(--sds-color-border-default-default);
+}
+
+.searchInput {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--sds-color-border-default-default);
+  border-radius: var(--corner-radius-sm);
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-text-sm, 14px);
+  line-height: var(--line-height-text-sm, 20px);
+  color: var(--sds-color-text-default-default);
+  background: transparent;
+  outline: none;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+}
+
+.searchInput:focus {
+  border-color: var(--sds-color-effects-focused-shadow-default);
+  box-shadow:
+    0 0 0 2px var(--sds-color-effects-focused-shadow-ring),
+    0 0 0 4px var(--sds-color-effects-focused-shadow-default);
+}
+
+/* ── Country list ── */
+
+.list {
+  max-height: 248px;
+  overflow-y: auto;
+  padding: 4px 0;
+  margin: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  cursor: pointer;
+  outline: none;
+  transition: background 80ms ease;
+}
+
+.item:hover,
+.item:focus {
+  background: var(--sds-color-background-brand-tertiary, #eff8ff);
+}
+
+.item--active {
+  background: var(--sds-color-background-brand-tertiary, #eff8ff);
+}
+
+.itemName {
+  flex: 1;
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-text-sm, 14px);
+  line-height: var(--line-height-text-sm, 20px);
+  color: var(--sds-color-text-default-default);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.itemDial {
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-text-sm, 14px);
+  line-height: var(--line-height-text-sm, 20px);
+  color: var(--sds-color-text-default-tertiary);
+  flex-shrink: 0;
+}
+
+.empty {
+  padding: 16px;
+  text-align: center;
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-text-sm, 14px);
+  color: var(--sds-color-text-default-tertiary);
+  list-style: none;
+}
+
+/* ─── Messages ───────────────────────────────────────────────────────────── */
+
+.message {
+  width: 100%;
+  margin: 0;
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-text-md);
+  line-height: var(--line-height-text-md);
+}
+
+.help {
+  color: var(--sds-color-text-default-tertiary);
+}
+
+.error {
+  color: var(--sds-color-text-danger-default);
+}
