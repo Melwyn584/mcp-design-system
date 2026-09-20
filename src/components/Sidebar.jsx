@@ -80,7 +80,7 @@ export function Sidebar({ active, onNavigate }) {
       {/* Footer */}
       <div style={styles.footer}>
         <a
-          href="https://www.figma.com/design/9S0hhvmvbRKS8513K2xo8H/MCP-Design-System"
+          href="https://www.figma.com/design/lG9lm52ixEnbv4n0Q6Jbc8/MCP-Design-System?node-id=5202-1"
           target="_blank"
           rel="noreferrer"
           style={styles.figmaLink}

@@ -49,7 +49,7 @@ export function OverviewPage({ onNavigate }) {
 
       <SectionTitle>Figma source</SectionTitle>
       <a
-        href="https://www.figma.com/design/9S0hhvmvbRKS8513K2xo8H/MCP-Design-System"
+        href="https://www.figma.com/design/lG9lm52ixEnbv4n0Q6Jbc8/MCP-Design-System?node-id=5202-1"
         target="_blank"
         rel="noreferrer"
         style={styles.figmaCard}
@@ -63,7 +63,7 @@ export function OverviewPage({ onNavigate }) {
         </svg>
         <div>
           <div style={{ fontWeight: 600, color: 'var(--text-h)', fontSize: 14 }}>MCP Design System</div>
-          <div style={{ fontSize: 12, color: 'var(--text)', marginTop: 2 }}>figma.com/design/9S0hhvmvbRKS8513K2xo8H</div>
+          <div style={{ fontSize: 12, color: 'var(--text)', marginTop: 2 }}>figma.com/design/lG9lm52ixEnbv4n0Q6Jbc8</div>
         </div>
         <span style={{ marginLeft: 'auto', fontSize: 12, color: 'var(--accent)' }}>Open ↗</span>
       </a>
